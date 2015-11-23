@@ -1,0 +1,70 @@
+<head>
+  <title>PocketMoney</title>
+</head>
+
+<body>
+  <h2 class = "title">Pocket Money</h2>
+	{{> heading}}
+
+<div>
+	<br>
+</div>
+	{{> transactions}}
+</body>
+
+<template name="heading">
+  <div id="categories" class="btn-group">
+  	<div class="category btn btn-primary" id="btnNewCat">
+  	<span class="glyphicon glyphicon-cog"></span> Setup
+  	</div>
+  	<div class="category btn btn-primary" id="Josie">
+  		Josie
+  	</div>
+  	<div class="category btn btn-primary" id="Ed">
+  		Ed
+  	</div>
+  	<div class="category btn btn-primary" id="Henry">
+  		Henry
+  	</div>
+  </div>
+  {{child}}
+</template>
+
+<template name="transactions">
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Reason</th>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+{{#each transactionlist}}
+      <tr>
+        <td>{{child}}</td>
+        <td>{{type}}</td>
+        <td>{{whatfor}}</td>
+        <td>{{prettyDate date}}</td>
+        <td><b>{{prettyCurrency amount}}</b></td>
+        <td>
+        {{#if isOwed type}}
+        	<A HREF="#"><div class="label label-warning">PAY</div></A>
+        {{/if}}        
+        </td>
+      </tr>
+{{/each}}
+    </tbody>
+  </table>
+  <div class="alert alert-warning alert-dismissible" role="alert">
+  	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  	<strong>Warning!</strong> Better check yourself, you're not looking too good.
+	</div>
+  </div>
+
+
+</template>
